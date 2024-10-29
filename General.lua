@@ -160,4 +160,39 @@ local function LHMZZV_fake_script() -- FlyScript.Script
 end
 coroutine.wrap(LHMZZV_fake_script)()
 
-
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
+local Window = Library.CreateLib("RobloxHack", "RJTheme3")
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Speed")
+Section:NewSlider("Speed", "SliderInfo", 500, 1, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+local Section = Tab:NewSection("JumpPower")
+Section:NewSlider("JumpPower", "SliderInfo", 500, 1, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+--[[
+Made by BombLoL (def not copied)
+made this in roblox studio
+it only targets your head not your hpr, cuz if hpr then broken
+thx (give credit if u want to copy)
+--]]
+local player = game:GetService("Players").LocalPlayer
+local Players = game:GetService("Players")
+local head = player.Character:FindFirstChild("Head")
+local hpr = player.Character:FindFirstChild("HumanoidRootPart")
+local hum = player.Character:FindFirstChildOfClass("Humanoid")
+function noclipFunction()
+	head.Touched:Connect(function(hit)
+		if hit:IsA("Part", "MeshPart") then
+			if hit.CanCollide == true then
+				hit.CanCollide = false
+				task.wait(0.5)
+				hit.CanCollide = true
+				hum.Health = hum.MaxHealth
+			end
+		end
+	end)
+end
+noclipFunction()
+Players.PlayerAdded:Connect(noclipFunction) -- idfk what dis do
