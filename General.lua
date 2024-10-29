@@ -195,4 +195,4 @@ function noclipFunction()
 	end)
 end
 noclipFunction()
-Players.PlayerAdded:Connect(noclipFunction) -- idfk what dis do
+Players.PlayerAdded:Connect(noclipFunction) -- idfk what dis doz
